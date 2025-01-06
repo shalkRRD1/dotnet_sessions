@@ -15,5 +15,15 @@ class Program
         {
             Console.WriteLine($"Value: {a}");
         }
+
+        //Reverse
+        Console.WriteLine("Reverse Array");
+
+        for (int i = args.Length; i > 0; i--)
+        {
+            Console.WriteLine($"Value: {args[i]}");
+        }
+
     }
+
 }
