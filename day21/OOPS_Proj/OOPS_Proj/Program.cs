@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using RectangleAbstractionApp.Models;
 
-class Program
+class RectangleTest
 {
     static void Main()
     {
