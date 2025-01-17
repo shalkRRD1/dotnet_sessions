@@ -6,7 +6,7 @@ class NumberGuessGame
     static void Main()
     {
         Random random = new Random();
-        int number = random.Next(1, 100);
+        int number = random.Next(1, 99);
         int guess = 0;
         int chanceToGuess = 5;
 
