@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ﻿using System;
 
 namespace Assignment_day30
+=======
+using System;
+
+namespace ProductApp
+>>>>>>> f4524d2e0a15df7adfa71ac312a8f89bab067c10
 {
     public abstract class Product
     {
