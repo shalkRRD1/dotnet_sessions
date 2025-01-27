@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 ﻿using System;
-=======
-using System;
->>>>>>> f4524d2e0a15df7adfa71ac312a8f89bab067c10
-
 public interface SumInterface
 {
     int Sum(int[] array);  
@@ -41,8 +36,6 @@ public class SumClass : SumAbstract
 		   	sum[1] += arr[i]; 
 		   }
        }
-<<<<<<< HEAD
-=======
     }
 }
 
@@ -55,7 +48,6 @@ class Program
 
         SumInterface sumArray = new SumClass();
 		Console.Write($"Sum of alternate integers present in the array is : [{sum[0]},{sum[1]}]");
->>>>>>> f4524d2e0a15df7adfa71ac312a8f89bab067c10
     }
 }
 
