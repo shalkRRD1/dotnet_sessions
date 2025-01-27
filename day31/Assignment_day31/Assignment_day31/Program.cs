@@ -1,72 +1,50 @@
-<<<<<<< HEAD
-﻿using System;
-=======
 using System;
->>>>>>> f4524d2e0a15df7adfa71ac312a8f89bab067c10
-
-public interface SumInterface
+namespace Assignment_day31
 {
-    int Sum(int[] array);  
-}
-
-public abstract class SumAbstract : SumInterface
-{
-    public abstract int Sum(int[] array);  
-}
-
-public class SumClass : SumAbstract
-{
-    public override int Sum(int[] array)
+    public interface SumInterface
     {
-       int[] arr = new int[10];
-	   int[] sum = new int[2];
-	   
-       Console.Write("Enter the number of elements to be stored in the array: ");
-       n = Convert.ToInt32(Console.ReadLine()); 
-
-       for (int i = 0; i < arr.Length-1; i++)
-       {
-           Console.Write($"Integer[{i}]: ");  
-           arr[i] = Convert.ToInt32(Console.ReadLine());  
-       }
-
-       for (i = 0; i < arr.Length-1; i++)
-       {
-		   if(i==0 || i%2==0)
-		   {
-		   	sum[0] += arr[i]; 
-		   }
-		   else
-		   {
-		   	sum[1] += arr[i]; 
-		   }
-       }
-<<<<<<< HEAD
-=======
+        void Sum(int[] array);
     }
-}
 
-class Program
-{
-    static void Main()
+    public abstract class SumAbstract : SumInterface
     {
-        int[] integers = { 1, 2, 3, 4, 5 };
-        int sum = sumArray.Sum(integers);
-
-        SumInterface sumArray = new SumClass();
-		Console.Write($"Sum of alternate integers present in the array is : [{sum[0]},{sum[1]}]");
->>>>>>> f4524d2e0a15df7adfa71ac312a8f89bab067c10
+        public abstract void Sum(int[] array);
     }
-}
 
-class Program
-{
-    static void Main()
+    public class SumClass : SumAbstract
     {
-        int[] integers = { 1, 2, 3, 4, 5 };
-        int sum = sumArray.Sum(integers);
-
-        SumInterface sumArray = new SumClass();
-		Console.Write($"Sum of alternate integers present in the array is : [{sum[0]},{sum[1]}]");
+        public override void Sum(int[] array)
+        {
+            int[] sumarr = new int[2];
+            //Console.Write("Enter the number of elements to be stored in the array: ");
+            for (int i = 0; i < array.Length; i++)
+            {
+                //int[] sumarr = new int[2];
+                //int sumOdd = 0;
+                if (i == 0 || i % 2 == 0)
+                {
+                    sumarr[0] += array[i];
+                }
+                else
+                {
+                    sumarr[1] += array[i];
+                }
+            }
+            Console.Write($"Value array: {sumarr[0]} and {sumarr[1]}");
+        }
     }
+
+    class Program
+    {
+        static void Main()
+        {
+            int[] integers = { 1, 2, 3, 4, 5 };
+            SumInterface sumArray = new SumClass();
+            //int[] sum = { 0, 0 };
+           // sum = 
+                sumArray.Sum(integers);
+            //Console.Write($"Value array: {sum[0]} and {sum[1]}");
+        }
+    }
+
 }
