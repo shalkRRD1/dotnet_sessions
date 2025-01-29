@@ -1,1 +1,190 @@
+using System;
 
+public interface ReverseInterface
+{
+    string[] Reverse(string[] array);  
+}
+
+public abstract class ReverseAbstract : ReverseInterface
+{
+    public abstract string[] Reverse(string[] array);  
+}
+
+public class ReverseClass : ReverseAbstract
+{
+    public override string[] Reverse(string[] array)
+    {
+       //string[] arr = new string[10];
+	   string reverseTemp = "";
+       for (int i = 0; i < array.Length/2; i++)
+       {
+           //Console.WriteLine($"Value: {i}");
+		   reverseTemp = array[i];
+		   array[i] = array[(array.Length-i)-1];
+		   array[array.Length-i-1] = reverseTemp;
+       }
+	   return array;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string[] str = {"abc","pqr","lmno","xyz","aaa"};
+        ReverseInterface reverseArray = new ReverseClass();
+		string[] reversed = reverseArray.Reverse(str);
+		Console.WriteLine("Reverse of strings present in the array is :");
+		for (int i = 0; i < reversed.Length; i++) 
+		{
+			Console.WriteLine(reversed[i]);
+		}
+    }
+}
+
+=================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+ 
+namespace Assignment_day32_2
+{
+class Program
+{
+static void Main(string[] args)
+{            
+FileStream f = new FileStream("d:\\b.txt", FileMode.OpenOrCreate);
+StreamWriter s = new StreamWriter(f);
+            
+Console.WriteLine("Please enter username and address file");
+s.WriteLine(Console.ReadLine());
+
+s.Close();
+f.Close();
+                       
+Console.ReadLine();
+}
+}
+}
+
+===========
+day33
+=============
+using System;
+
+public interface RotateInterface
+{
+    int[] Rotate(int[] array);  
+}
+
+public abstract class RotateAbstract : RotateInterface
+{
+    public abstract int[] Rotate(int[] array);  
+}
+
+public class RotateClass : RotateAbstract
+{
+    public override int[] Rotate(int[] array)
+    {
+       //int[] arr = new int[10];
+	   Console.WriteLine("Enter number of rotations: ");
+	   int temp = Int32.Parse(Console.ReadLine());
+	   Console.WriteLine("Enter direction of rotations:Press C for Clockwise and A for anti-clockwise");
+	   //string str = Console.ReadLine();
+	   char direction = Char.ToUpper(Console.ReadKey().KeyChar);
+	   int rotateTemp = 0;
+	   
+	   while(temp!=0)
+	   {
+	       switch(direction)
+	       {
+	       case 'A':
+			    rotateTemp = array[0];
+			    for (int i = 0; i < array.Length-1; i++)
+			    {
+			    	Console.WriteLine($"Value: {i}");
+			    	array[i] = array[i+1];
+			    }
+			    array[array.Length-1] = rotateTemp;
+			    break;
+		    case 'C': 
+		        rotateTemp = array[0];
+			    for (int i = 1; i < array.Length ; i++)
+			    {
+			    	Console.WriteLine($"Value: {i}");
+			    	array[i-1]=array[i];
+			    }
+			    array[array.Length-1] = rotateTemp;
+			    break;
+			 default:Console.WriteLine("Either A or C acceptable");
+			         break;
+	       }
+			temp--;
+		}
+	   return array;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        int[] integers = {1,2,3,4,5,6,7};
+        RotateInterface rotateArray = new RotateClass();
+		int[] rotated = rotateArray.Rotate(integers);
+		Console.WriteLine("Rotated array is :");
+		for (int i = 0; i < rotated.Length; i++) 
+		{
+			Console.Write($"{rotated[i]} ");
+		}
+    }
+}
+==============================
+class Account
+{
+    public Account(string name, int balance)
+    {
+        Name = name;
+        Balance = balance;
+    }
+    public string Name { get; private set; }
+    public int Balance { get; private set; }
+
+    public void Debit(int amount)
+    {
+        if (Balance < amount) throw new InsufficientFuncException(Name, Balance, amount);
+        Balance = Balance - amount;
+    }
+
+    public void Credit(int amount) => Balance = amount + Balance;
+}
+
+///////////////
+using System;
+
+namespace MyApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var account = new Account("Abc Xyz", 2000);
+            try
+            {
+                account.Debit(2001);
+            }
+            catch (InsufficientFuncException ex)
+            {
+                Console.WriteLine("Encountered exception \nException Message: " + ex.Message);
+                Console.WriteLine("Account Balance: " + ex.AccountBalance);
+                Console.WriteLine("Transaction Amount: " + ex.TransactionAmount);
+            }
+
+            Console.Read();
+        }
+    }
+}
